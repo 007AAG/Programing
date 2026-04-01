@@ -1,12 +1,16 @@
 from tkinter import *
 from tkinter import messagebox
 
+# ---------------- GLOBAL VARIABLES ----------------
 hire_details = []
 total_entries = 0
+
+# ---------------- FUNCTIONS ----------------
 
 def quit_app():
     main_window.destroy()
 
+# Add (append) data only
 def append_name():
     global hire_details, total_entries
 
@@ -17,12 +21,15 @@ def append_name():
     date_hired = entry_date_hired.get()
     return_date = entry_date_return.get()
 
+    # Validation
     if not check_input(name, receipt, item, quantity, return_date):
         return
 
+    # Append ONLY (no printing yet)
     hire_details.append([name, receipt, item, quantity, date_hired, return_date])
     total_entries += 1
 
+    # Clear fields after appending
     entry_full_name.delete(0, END)
     entry_receipt_number.delete(0, END)
     entry_items_hired.delete(0, END)
@@ -30,9 +37,12 @@ def append_name():
     entry_date_hired.delete(0, END)
     entry_date_return.delete(0, END)
 
+
+# Print all appended data
 def entry_print():
     refresh_table()
 
+# Clear input fields (optional separate use)
 def clear_fields():
     entry_full_name.delete(0, END)
     entry_receipt_number.delete(0, END)
@@ -41,6 +51,7 @@ def clear_fields():
     entry_date_hired.delete(0, END)
     entry_date_return.delete(0, END)
 
+# Delete row
 def delete_row():
     global hire_details, total_entries
 
@@ -52,6 +63,7 @@ def delete_row():
     except:
         messagebox.showerror("Error", "Invalid row number")
 
+# Refresh table
 def refresh_table():
     for widget in main_window.grid_slaves():
         if int(widget.grid_info()["row"]) > 8:
@@ -62,6 +74,7 @@ def refresh_table():
         for j, value in enumerate(data):
             Label(main_window, text=value).grid(column=j+1, row=i+9)
 
+# UI setup
 def setup_buttons():
     global entry_full_name, entry_receipt_number, entry_items_hired
     global entry_number_hired, entry_row, entry_date_hired, entry_date_return
@@ -94,15 +107,17 @@ def setup_buttons():
     entry_row = Entry(main_window)
     entry_row.grid(column=5, row=2)
 
-    Button(main_window, text="Print", command=entry_print).grid(column=0, row=0)
-    Button(main_window, text="Append Details", command=append_name).grid(column=1, row=0)
+    Button(main_window, text="Print", command=entry_print).grid(column=3, row=3)
+    Button(main_window, text="Append Details", command=append_name).grid(column=3, row=2)
     Button(main_window, text="Delete Row", command=delete_row).grid(column=5, row=3)
     Button(main_window, text="Quit", command=quit_app).grid(column=7, row=7)
 
+    # Headers
     headers = ["Row", "Customer Name", "Receipt", "Item", "Qty", "Hired", "Return"]
     for i, h in enumerate(headers):
         Label(main_window, text=h, font='bold').grid(column=i, row=8)
 
+# Validation function
 def check_input(name, receipt, item, quantity, return_date):
     if name == "" or receipt == "" or item == "" or quantity == "" or return_date == "":
         messagebox.showerror("Input Error", "All fields must be filled in")
@@ -126,6 +141,7 @@ def check_input(name, receipt, item, quantity, return_date):
 
     return True
 
+# Main
 def main():
     global main_window
 
