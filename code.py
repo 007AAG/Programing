@@ -15,7 +15,21 @@ def append_name():
     item = entry_items_hired.get()
     quantity = entry_number_hired.get()
     date_hired = entry_date_hired.get()
-    return_date = entry_date_return.get() 
+    return_date = entry_date_return.get()
+
+    hire_details.append([name, receipt, item, quantity, date_hired, return_date])
+    total_entries += 1
+
+    entry_full_name.delete(0, END)
+    entry_receipt_number.delete(0, END)
+    entry_items_hired.delete(0, END)
+    entry_number_hired.delete(0, END)
+    entry_date_hired.delete(0, END)
+    entry_date_return.delete(0, END)
+
+
+def entry_print():
+    refresh_table()
 
 def clear_fields():
     entry_full_name.delete(0, END)
@@ -82,6 +96,10 @@ def setup_buttons():
     Button(main_window, text="Append Details", command=append_name).grid(column=1, row=0)
     Button(main_window, text="Delete Row", command=delete_row).grid(column=5, row=3)
     Button(main_window, text="Quit", command=quit_app).grid(column=7, row=7)
+
+    headers = ["Row", "Customer Name", "Receipt", "Item", "Qty", "Hired", "Return"]
+    for i, h in enumerate(headers):
+        Label(main_window, text=h, font='bold').grid(column=i, row=8)
 
 def main():
     global main_window
