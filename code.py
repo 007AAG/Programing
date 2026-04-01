@@ -24,3 +24,25 @@ def clear_fields():
     entry_number_hired.delete(0, END)
     entry_date_hired.delete(0, END)
     entry_date_return.delete(0, END)
+
+def delete_row():
+    global hire_details, total_entries
+
+    try:
+        row = int(entry_row.get())
+        hire_details.pop(row)
+        total_entries -= 1
+        refresh_table()
+    except:
+        messagebox.showerror("Error", "Invalid row number")
+
+def refresh_table():
+    for widget in main_window.grid_slaves():
+        if int(widget.grid_info()["row"]) > 8:
+            widget.destroy()
+
+    for i, data in enumerate(hire_details):
+        Label(main_window, text=i).grid(column=0, row=i+9)
+        for j, value in enumerate(data):
+            Label(main_window, text=value).grid(column=j+1, row=i+9)
+
