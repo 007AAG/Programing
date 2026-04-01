@@ -17,6 +17,9 @@ def append_name():
     date_hired = entry_date_hired.get()
     return_date = entry_date_return.get()
 
+    if not check_input(name, receipt, item, quantity, return_date):
+        return
+
     hire_details.append([name, receipt, item, quantity, date_hired, return_date])
     total_entries += 1
 
@@ -26,7 +29,6 @@ def append_name():
     entry_number_hired.delete(0, END)
     entry_date_hired.delete(0, END)
     entry_date_return.delete(0, END)
-
 
 def entry_print():
     refresh_table()
@@ -100,6 +102,29 @@ def setup_buttons():
     headers = ["Row", "Customer Name", "Receipt", "Item", "Qty", "Hired", "Return"]
     for i, h in enumerate(headers):
         Label(main_window, text=h, font='bold').grid(column=i, row=8)
+
+def check_input(name, receipt, item, quantity, return_date):
+    if name == "" or receipt == "" or item == "" or quantity == "" or return_date == "":
+        messagebox.showerror("Input Error", "All fields must be filled in")
+        return False
+
+    if not name.replace(" ", "").isalpha():
+        messagebox.showerror("Input Error", "Customer name must contain letters only")
+        return False
+
+    if not receipt.isdigit():
+        messagebox.showerror("Input Error", "Receipt number must be numbers only")
+        return False
+
+    if not item.replace(" ", "").isalpha():
+        messagebox.showerror("Input Error", "Item must contain letters only")
+        return False
+
+    if not quantity.isdigit():
+        messagebox.showerror("Input Error", "Quantity must be a number")
+        return False
+
+    return True
 
 def main():
     global main_window
