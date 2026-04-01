@@ -5,8 +5,9 @@ def quit():
     main_window.destroy
 
 def main():
+    Button(main_window, text="Append Details",command=append_name).grid(column=7,row=2)
     Button(main_window, text="Quit",command= quit) .grid(column=7,row=5)
-    Button(main_window, text="Print",command=entry_print).grid(column=7,row=2)
+    Button(main_window, text="Print",command=entry_print).grid(column=7,row=3)
     Label(main_window,text="Customer Name").grid(column=0,row=2)
     Label(main_window,text="Receipt Number").grid(column=0,row=3)
     Label(main_window,text="Item Hired").grid(column=0,row=4)
