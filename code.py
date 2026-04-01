@@ -46,3 +46,34 @@ def refresh_table():
         for j, value in enumerate(data):
             Label(main_window, text=value).grid(column=j+1, row=i+9)
 
+def setup_buttons():
+    global entry_full_name, entry_receipt_number, entry_items_hired
+    global entry_number_hired, entry_row, entry_date_hired, entry_date_return
+
+    Label(main_window, text="Customer Name").grid(column=0, row=2)
+    entry_full_name = Entry(main_window)
+    entry_full_name.grid(column=2, row=2)
+
+    Label(main_window, text="Receipt Number").grid(column=0, row=3)
+    entry_receipt_number = Entry(main_window)
+    entry_receipt_number.grid(column=2, row=3)
+
+    Label(main_window, text="Items Hired").grid(column=0, row=4)
+    entry_items_hired = Entry(main_window)
+    entry_items_hired.grid(column=2, row=4)
+
+    Label(main_window, text="Number Hired").grid(column=0, row=5)
+    entry_number_hired = Entry(main_window)
+    entry_number_hired.grid(column=2, row=5)
+
+    Label(main_window, text="Date Hired").grid(column=0, row=6)
+    entry_date_hired = Entry(main_window)
+    entry_date_hired.grid(column=2, row=6)
+
+    Label(main_window, text="Return Date").grid(column=0, row=7)
+    entry_date_return = Entry(main_window)
+    entry_date_return.grid(column=2, row=7)
+
+    Label(main_window, text="Row ").grid(column=4, row=2)
+    entry_row = Entry(main_window)
+    entry_row.grid(column=5, row=2)
