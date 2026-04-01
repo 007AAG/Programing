@@ -103,14 +103,14 @@ def setup_buttons():
     entry_date_return = Entry(main_window)
     entry_date_return.grid(column=2, row=7)
 
-    Label(main_window, text="Row ").grid(column=4, row=2)
+    Label(main_window, text="Row ").grid(column=3, row=5)
     entry_row = Entry(main_window)
-    entry_row.grid(column=5, row=2)
+    entry_row.grid(column=4, row=5)
 
-    Button(main_window, text="Print", command=entry_print).grid(column=3, row=3)
+    Button(main_window, text="Print", command=entry_print).grid(column=4, row=2)
     Button(main_window, text="Append Details", command=append_name).grid(column=3, row=2)
-    Button(main_window, text="Delete Row", command=delete_row).grid(column=5, row=3)
-    Button(main_window, text="Quit", command=quit_app).grid(column=7, row=7)
+    Button(main_window, text="Delete Row", command=delete_row).grid(column=5, row=5)
+    Button(main_window, text="Quit", command=quit_app).grid(column=6, row=7)
 
     # Headers
     headers = ["Row", "Customer Name", "Receipt", "Item", "Qty", "Hired", "Return"]
