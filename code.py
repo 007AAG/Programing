@@ -13,6 +13,11 @@ def main():
     Label(main_window,text="Number Hired").grid(column=0,row=5)
     main_window.mainloop()
 
+def append_name ():
+    if len(entry_name.get()) != 0 :
+        j_names.append(entry_name.get())
+        number['total_entries'] += 1
+
 def entry_print():
     Label(main_window,text= entry_full_name.get()).grid(column=0,row=6,sticky=E)
     Label(main_window,text=entry_receipt_number.get()).grid(column=1,row=6)
