@@ -77,3 +77,20 @@ def setup_buttons():
     Label(main_window, text="Row ").grid(column=4, row=2)
     entry_row = Entry(main_window)
     entry_row.grid(column=5, row=2)
+
+    Button(main_window, text="Print", command=entry_print).grid(column=0, row=0)
+    Button(main_window, text="Append Details", command=append_name).grid(column=1, row=0)
+    Button(main_window, text="Delete Row", command=delete_row).grid(column=5, row=3)
+    Button(main_window, text="Quit", command=quit_app).grid(column=7, row=7)
+
+def main():
+    global main_window
+
+    main_window = Tk()
+    main_window.title("Hire System")
+
+    setup_buttons()
+
+    main_window.mainloop()
+
+main()
