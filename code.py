@@ -16,6 +16,11 @@ def append_name ():
         j_names.append(entry_name.get())
         number['total_entries'] += 1
 
+def generate_random():
+    random_number = random.randint(1,10)
+    Label(main_window,text=random_number).grid(column=0,row=2, sticky=E)
+
+
 def main():
     Button(main_window, text="Append Details",command=append_name).grid(column=3,row=1)
     Button(main_window, text="Quit",command= quit) .grid(column=5,row=1)
@@ -29,7 +34,7 @@ def main():
     Label(main_window,font='bold',text="Receipt Number").grid(column=2,row=6)
     Label(main_window,font='bold',text="Hire Item").grid(column=3,row=6,padx=10)
     Label(main_window,font='bold',text="Number Hired").grid(column=4,row=6,padx=15)
-    Label(main_window,text="Row #").grid(column=4,row=2)
+    Label(main_window,text="Row ").grid(column=4,row=2)
     main_window.mainloop()
 
 main_window =Tk()
